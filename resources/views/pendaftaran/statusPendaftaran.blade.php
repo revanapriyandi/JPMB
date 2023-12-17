@@ -31,7 +31,7 @@
             <!-- Title -->
             <div class="mt-5 max-w-2xl text-center mx-auto">
                 <h1 class="block font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-gray-200">
-                    Selamat Anda Diterima
+                    Selamat Anda
                     <span class="bg-clip-text bg-gradient-to-tl from-blue-600 to-violet-600 text-transparent">
                         Diterima
                     </span>
@@ -42,7 +42,8 @@
             <div class="mt-5 max-w-3xl text-center mx-auto">
                 <p class="text-lg text-gray-600 dark:text-gray-400">
                     Status pendaftaran anda telah diterima. Silahkan datang ke kampus untuk melakukan registrasi ulang.
-                    Selamat bergabung di Kampus pada program studi {{ Str::upper($pendaftaran->jurusan_diterima) }}.
+                    Selamat bergabung di Kampus pada program studi
+                    <strong>{{ Str::upper($pendaftaran->jurusan_diterima) }}</strong>.
                     Terima kasih.
                 </p>
             </div>

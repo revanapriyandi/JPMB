@@ -13,6 +13,7 @@ class FormOrangTua extends Component
     public $pekerjaan_ibukandung;
     public $pekerjaan_ayahkandung;
 
+
     public function rules()
     {
         return [
@@ -21,6 +22,17 @@ class FormOrangTua extends Component
             'pekerjaan_ibukandung' => 'required',
             'pekerjaan_ayahkandung' => 'required',
         ];
+    }
+
+    public function mount()
+    {
+        $cek = Pendaftaran::where('user_id', auth()->user()->id)->where('status', false)->first();
+        if ($cek != null) {
+            $this->nama_ibukandung = $cek->nama_ibukandung;
+            $this->nama_ayahkandung = $cek->nama_ayahkandung;
+            $this->pekerjaan_ibukandung = $cek->pekerjaan_ibukandung;
+            $this->pekerjaan_ayahkandung = $cek->pekerjaan_ayahkandung;
+        }
     }
 
     public function save()

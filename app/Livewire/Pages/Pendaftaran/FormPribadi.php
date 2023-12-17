@@ -18,19 +18,41 @@ class FormPribadi extends Component
     public $jenis_kelamin;
     public $alamat;
 
+    public $id;
+    public $editMode = false;
+
     public function rules()
     {
         return [
-            'nisn' => 'required|numeric|unique:pendaftarans,nisn',
-            'nik' => 'required|numeric|unique:pendaftarans,nik',
+            'nisn' => 'required|string|unique:pendaftarans,nisn,' . ($this->editMode ? $this->id : 'NULL'),
+            'nik' => 'required|string|unique:pendaftarans,nik,' . ($this->editMode ? $this->id : 'NULL') . '|min:16|max:16',
             'nama' => 'required',
-            'email' => 'required|email|unique:pendaftarans,email',
+            'email' => 'required|email|unique:pendaftarans,email,' . ($this->editMode ? $this->id : 'NULL') . '|max:50',
             'phone_number' => 'required|numeric',
             'tanggal_lahir' => 'required|date',
             'tempat_lahir' => 'required',
             'jenis_kelamin' => 'required',
             'alamat' => 'required',
         ];
+    }
+
+    public function mount()
+    {
+        $cek = Pendaftaran::where('user_id', auth()->user()->id)->where('status', false)->first();
+        if ($cek != null) {
+            $this->id = $cek->id;
+            $this->editMode = true;
+
+            $this->nisn = $cek->nisn;
+            $this->nik = $cek->nik;
+            $this->nama = $cek->nama;
+            $this->email = $cek->email;
+            $this->phone_number = $cek->phone_number;
+            $this->tanggal_lahir = $cek->tanggal_lahir;
+            $this->tempat_lahir = $cek->tempat_lahir;
+            $this->jenis_kelamin = $cek->jenis_kelamin;
+            $this->alamat = $cek->alamat;
+        }
     }
 
     public function save()

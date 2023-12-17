@@ -21,6 +21,16 @@ class FormJurusan extends Component
         ];
     }
 
+    public function mount()
+    {
+        $cek = Pendaftaran::where('user_id', auth()->user()->id)->where('status', false)->first();
+        if ($cek != null) {
+            $this->jurusan_pilihan1 = $cek->jurusan_pilihan1;
+            $this->jurusan_pilihan2 = $cek->jurusan_pilihan2;
+            $this->jurusan_pilihan3 = $cek->jurusan_pilihan3;
+        }
+    }
+
     public function save()
     {
         $this->validate();
@@ -60,6 +70,8 @@ class FormJurusan extends Component
             ], $data);
 
             $this->dispatch('saved', 'success', 'Data berhasil disimpan');
+
+            $this->redirect(route('pendaftaran'));
         } catch (Exception $e) {
             $this->dispatch('saved', 'error', 'Data gagal disimpan, Error: ' . $e->getMessage());
         }

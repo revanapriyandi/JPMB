@@ -27,6 +27,19 @@ class FormSekolah extends Component
         ];
     }
 
+    public function mount()
+    {
+        $cek = Pendaftaran::where('user_id', auth()->user()->id)->where('status', false)->first();
+        if ($cek != null) {
+            $this->alamat_sekolah = $cek->alamat_sekolah;
+            $this->asal_sekolah = $cek->asal_sekolah;
+            $this->jurusan = $cek->jurusan;
+            $this->tahun_lulus = $cek->tahun_lulus;
+            $this->nilai_raport = $cek->nilai_raport;
+            $this->nilai_un = $cek->nilai_un;
+        }
+    }
+
     public function save()
     {
         $this->validate();
