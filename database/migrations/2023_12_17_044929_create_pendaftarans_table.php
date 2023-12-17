@@ -42,6 +42,7 @@ return new class extends Migration
 
             $table->boolean('status')->default(false);
             $table->string('status_pendaftaran')->nullable();
+            $table->string('jurusan_diterima')->nullable();
 
             $table->timestamps();
         });
