@@ -16,6 +16,8 @@
             display: none !important;
         }
     </style>
+
+    @stack('styles')
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -39,6 +41,8 @@
         </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@flasher/flasher@1.2.4/dist/flasher.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
     <script>
         document.addEventListener('livewire:initialized', () => {
             Livewire.on('saved', (param) => {
@@ -64,6 +68,8 @@
             });
         });
     </script>
+
+    @stack('scripts')
 </body>
 
 </html>

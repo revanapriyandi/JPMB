@@ -21,16 +21,16 @@ class Datatable extends DataTableComponent
         return [
             Column::make("Id", "id")
                 ->sortable(),
-            Column::make("Nama", "nama")
+            Column::make("Nama Lengkap", "nama_lengkap")
                 ->sortable()
                 ->searchable(),
             Column::make("Email", "email")
                 ->sortable()
                 ->searchable(),
-            Column::make("No. HP", "phone_number")
+            Column::make("No. Telepon", "no_telepon")
                 ->sortable()
                 ->searchable(),
-            Column::make("Alamat", "alamat")
+            Column::make("No. HP", "no_hp")
                 ->sortable()
                 ->searchable(),
             Column::make("Tanggal Lahir", "tanggal_lahir")
@@ -48,15 +48,6 @@ class Datatable extends DataTableComponent
                 ->format(function ($value) {
                     return $value == "L" ? "Laki-laki" : "Perempuan";
                 }),
-            Column::make('Jurusan Pilihan 1', 'jurusan_pilihan1')
-                ->sortable()
-                ->searchable(),
-            Column::make('Jurusan Pilihan 2', 'jurusan_pilihan2')
-                ->sortable()
-                ->searchable(),
-            Column::make('Jurusan Pilihan 3', 'jurusan_pilihan3')
-                ->sortable()
-                ->searchable(),
             Column::make("Created at", "created_at")
                 ->sortable(),
             Column::make("Actions", "id")

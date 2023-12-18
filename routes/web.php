@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\UsersController;
-use App\Livewire\Pages\Pendaftar\Show;
+use Barryvdh\DomPDF\PDF;
+use App\Models\Pendaftaran;
 use App\Livewire\Pages\Users\View;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Pages\Pendaftar\Show;
+use App\Http\Controllers\UsersController;
 
 Route::view('/', 'dashboard')
     ->middleware(['auth', 'verified'])

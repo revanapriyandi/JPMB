@@ -23,18 +23,33 @@
                 <div class="max-w-2xl text-center mx-auto">
                     <!-- Title -->
                     <div class="mt-5 max-w-2xl">
-                        <h1
+                        <h2
                             class="block font-semibold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-gray-200">
                             Pendaftaran Mahasiswa Baru
-                        </h1>
+                        </h2>
                     </div>
                     <!-- End Title -->
 
                     <div class="mt-5 max-w-3xl">
-                        <p class="text-lg text-gray-600 dark:text-gray-400">
+                        <p class="text-lg text-gray-600 dark:text-gray-400 mb-4">
                             Selamat datang di website pendaftaran mahasiswa baru Universitas **. Silahkan melakukan
                             pendaftaran dengan mengisi form pendaftaran yang telah disediakan. Terima kasih.
                         </p>
+                        <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
+                            poster="https://minangsatu.com/upload/IMG-20220215-WA0064.jpg" data-setup="{}">
+                            <source src="{{ asset('assets/video_smk.mp4') }}" type="video/mp4" />
+                            <p class="vjs-no-js">
+                                To view this video please enable JavaScript, and consider upgrading to a
+                                web browser that
+                                <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5
+                                    video</a>
+                            </p>
+                        </video>
+                    </div>
+
+
+                    <div class="mt-5 max-w-3xl">
+                        <img src="https://minangsatu.com/upload/IMG-20220215-WA0064.jpg" alt="">
                     </div>
 
                 </div>
@@ -42,4 +57,11 @@
         </div>
     </div>
     <!-- End Hero -->
+    @push('styles')
+        <link href="https://vjs.zencdn.net/8.6.1/video-js.css" rel="stylesheet" />
+    @endpush
+
+    @push('scripts')
+        <script src="https://vjs.zencdn.net/8.6.1/video.min.js"></script>
+    @endpush
 </x-app-layout>

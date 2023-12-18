@@ -3,6 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             Data Pendaftar
         </h2>
+
     </x-slot>
 
 
@@ -15,7 +16,7 @@
 
                         <div class="max-w-2xl mx-auto text-center ">
                             <h2 class="text-2xl font-bold md:text-3xl md:leading-tight text-gray-800 dark:text-gray-200">
-                                Data Pendaftar {{ $pendaftar->nama }}
+                                Data Pendaftar {{ $pendaftar->nama_lengkap }}
                             </h2>
                         </div>
 
@@ -55,31 +56,11 @@
                                                         <tr>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                NISN
-                                                            </td>
-                                                            <td
-                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                {{ $pendaftar->nisn }}
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td
-                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                NIK
-                                                            </td>
-                                                            <td
-                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                {{ $pendaftar->nik }}
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td
-                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
                                                                 Nama Lengkap
                                                             </td>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                {{ $pendaftar->nama }}
+                                                                {{ $pendaftar->nama_lengkap }}
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -96,12 +77,23 @@
                                                         <tr>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                Nomor HP / Whatsapp
+                                                                Nomor Telepon
                                                             </td>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
                                                                 <a
-                                                                    href="https://wa.me/{{ $pendaftar->phone_number }}">{{ $pendaftar->phone_number }}</a>
+                                                                    href="tel:{{ $pendaftar->no_telepon }}">{{ $pendaftar->no_telepon }}</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td
+                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
+                                                                Nomor HP
+                                                            </td>
+                                                            <td
+                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
+                                                                <a
+                                                                    href="https://wa.me/{{ $pendaftar->no_hp }}">{{ $pendaftar->no_hp }}</a>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -122,6 +114,36 @@
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
                                                                 {{ date('d F Y', strtotime($pendaftar->tanggal_lahir)) }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td
+                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
+                                                                Kabupaten
+                                                            </td>
+                                                            <td
+                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
+                                                                {{ $pendaftar->kabupaten_lahir->name }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td
+                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
+                                                                Provinsi
+                                                            </td>
+                                                            <td
+                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
+                                                                {{ $pendaftar->provinsi_lahir->name }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td
+                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
+                                                                Negara
+                                                            </td>
+                                                            <td
+                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
+                                                                {{ $pendaftar->negara_lahir ?? 'Indonesia' }}
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -154,61 +176,77 @@
                                                         <tr>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                Asal Sekolah
+                                                                Alamat KTP
                                                             </td>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                {{ $pendaftar->asal_sekolah }}
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td
-                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                Jurusan Asal
-                                                            </td>
-                                                            <td
-                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                {{ $pendaftar->jurusan }}
+                                                                {{ $pendaftar->alamat_ktp }}
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                Jurusan Lulus
+                                                                Alamat Tinggal
                                                             </td>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                {{ $pendaftar->tahun_lulus }}
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td
-                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                Nilai Raport
-                                                            </td>
-                                                            <td
-                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                {{ number_format($pendaftar->nilai_raport, 2, ',', '.') }}
+                                                                {{ $pendaftar->alamat_tinggal }}
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                Nilai UN
+                                                                Kecamatan
                                                             </td>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                {{ number_format($pendaftar->nilai_un, 2, ',', '.') }}
+                                                                {{ $pendaftar->kecamatan }}
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                Alamat Sekolah
+                                                                Kabupaten
                                                             </td>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                {{ $pendaftar->alamat_sekolah }}
+                                                                {{ $pendaftar->kabupaten->name }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td
+                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
+                                                                Provinsi
+                                                            </td>
+                                                            <td
+                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
+                                                                {{ $pendaftar->provinsi->name }}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td
+                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
+                                                                Kewarganegaraan
+                                                            </td>
+                                                            <td
+                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
+                                                                @if ($pendaftar->kewarganegaraan == 'wni_keturunan')
+                                                                    WNI Keturunan
+                                                                @elseif($pendaftar->kewarganegaraan == 'wni_asli')
+                                                                    WNI Asli
+                                                                @elseif($pendaftar->kewarganegaraan == 'wna')
+                                                                    WNA
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td
+                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
+                                                                Negara Asal
+                                                            </td>
+                                                            <td
+                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
+                                                                {{ $pendaftar->negara_wna ?? 'Indonesia' }}
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -217,6 +255,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="flex flex-col">
                                     <div class="-m-1.5 overflow-x-auto">
                                         <div class="p-1.5 min-w-full inline-block align-middle">
@@ -227,130 +266,35 @@
                                                         <tr>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                Nama Ibu Kandung
+                                                                Status Menikah
                                                             </td>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                {{ $pendaftar->nama_ibukandung }}
+                                                                @if ($pendaftar->status_menikah == 'belum_menikah')
+                                                                    Belum Menikah
+                                                                @elseif($pendaftar->status_menikah == 'menikah')
+                                                                    Menikah
+                                                                @elseif($pendaftar->status_menikah == 'lainnya')
+                                                                    Lainnya
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                Pekerjaan Ibu Kandung
+                                                                Agama
                                                             </td>
                                                             <td
                                                                 class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                {{ $pendaftar->pekerjaan_ibukandung }}
+                                                                {{ ucfirst($pendaftar->agama) }}
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <td
-                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                Nama Ayah Kandung
-                                                            </td>
-                                                            <td
-                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                {{ $pendaftar->nama_ayahkandung }}
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td
-                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                Pekerjaaan Ayah Kandung
-                                                            </td>
-                                                            <td
-                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                {{ $pendaftar->pekerjaan_ayahkandung }}
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex flex-col">
-                                    <div class="-m-1.5 overflow-x-auto">
-                                        <div class="p-1.5 min-w-full inline-block align-middle">
-                                            <div class="overflow-hidden">
-                                                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
 
-                                                    <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                                                        <tr>
-                                                            <td
-                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                Jurusan Didaftar 1
-                                                            </td>
-                                                            <td
-                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                {{ $pendaftar->jurusan_pilihan1 }}
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td
-                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                Jurusan Didaftar 2
-                                                            </td>
-                                                            <td
-                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                {{ $pendaftar->jurusan_pilihan2 }}
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td
-                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                Jurusan Didaftar 3
-                                                            </td>
-                                                            <td
-                                                                class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-200">
-                                                                {{ $pendaftar->jurusan_pilihan3 }}
-                                                            </td>
-                                                        </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
                                             <hr class="my-4">
-                                            <form wire:submit="updateStatusPendaftaran">
-                                                <div class="sm:col-span-3 p-3">
-                                                    <x-input-label for="status_pendaftaran"
-                                                        value="{{ __('Status Pendaftaran') }}"
-                                                        class="block text-sm" />
-                                                    <div class="mt-2">
-                                                        <select name="status_pendaftaran" id="status_pendaftaran"
-                                                            wire:model.change="status_pendaftaran"
-                                                            class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm w-full">
-                                                            <option value="">-- Pilih Status Pendaftaran --
-                                                            </option>
-                                                            <option value="PENDING">Belum Diverifikasi</option>
-                                                            <option value="DITERIMA">Diterima</option>
-                                                            <option value="DITOLAK">Ditolak</option>
-                                                        </select>
-                                                        <x-input-error for="status_pendaftaran" class="mt-2" />
-                                                    </div>
-                                                </div>
-                                                @if ($status_pendaftaran == 'DITERIMA')
-                                                    <div class="sm:col-span-3 p-3">
-                                                        <x-input-label for="jurusan_diterima"
-                                                            value="{{ __('Jurusan Diterima') }}"
-                                                            class="block text-sm" />
-                                                        <div class="mt-2">
-                                                            <x-text-input wire:model="jurusan_diterima"
-                                                                id="jurusan_diterima" name="jurusan_diterima"
-                                                                type="text" class="mt-1 block w-full" required
-                                                                autofocus autocomplete="jurusan_diterima" />
-                                                            <x-input-error for="status_pendaftaran" class="mt-2" />
-                                                        </div>
-                                                    </div>
-                                                @endif
 
-                                                <x-danger-button class="mt-4" wire:click="hapusDataPendaftar">
-                                                    Hapus Pendaftar
-                                                </x-danger-button>
-                                                <x-primary-button class="mt-4">
-                                                    {{ __('Update Status Pendaftaran') }}
-                                                </x-primary-button>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>

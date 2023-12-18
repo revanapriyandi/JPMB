@@ -79,6 +79,7 @@ class FormModal extends Component
             }
 
             $this->reset();
+            $this->redirect(route('admin.users'));
             $this->dispatch('close');
         } catch (Exception $e) {
             $this->dispatch('saved', 'error', 'Error saving user. Error: ' . $e->getMessage());

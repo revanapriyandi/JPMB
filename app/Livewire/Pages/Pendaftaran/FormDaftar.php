@@ -2,32 +2,13 @@
 
 namespace App\Livewire\Pages\Pendaftaran;
 
-use App\Models\Pendaftaran;
 use Livewire\Component;
+use Barryvdh\DomPDF\PDF;
+use App\Models\Pendaftaran;
 
 class FormDaftar extends Component
 {
-    public $index = 0;
-    public $lastIndex = 3;
 
-    public function setIndex($index)
-    {
-        $this->index = $index;
-    }
-
-    public function NextIndex()
-    {
-        if ($this->index < $this->lastIndex) {
-            $this->index++;
-        }
-    }
-
-    public function PrevIndex()
-    {
-        if ($this->index > 0) {
-            $this->index--;
-        }
-    }
 
     public function render()
     {

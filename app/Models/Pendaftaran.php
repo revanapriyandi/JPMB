@@ -15,4 +15,24 @@ class Pendaftaran extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public function kabupaten()
+    {
+        return $this->belongsTo(Kabupaten::class, 'kabupaten_id');
+    }
+
+    public function provinsi()
+    {
+        return $this->belongsTo(Provinsi::class, 'provinsi_id');
+    }
+
+    public function kabupaten_lahir()
+    {
+        return $this->belongsTo(Kabupaten::class, 'kabupaten_lahir_id');
+    }
+
+    public function provinsi_lahir()
+    {
+        return $this->belongsTo(Provinsi::class, 'provinsi_lahir_id');
+    }
 }
